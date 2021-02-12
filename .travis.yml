@@ -1,0 +1,11 @@
+anguage: java
+
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+    - develop
+
+script: ./gradlew check
