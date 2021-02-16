@@ -10,7 +10,3 @@ branches:
 
 script:
   - ./gradlew check
-  - if [$TRAVIS_BRANCH == "main"]; then
-    ./gradlew build;
-    ./gradlew publish;
-    fi
