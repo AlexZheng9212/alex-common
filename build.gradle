@@ -51,8 +51,8 @@ dependencies {
 
 version = 'release-1.0.0'
 
-def githubProperties = new Properties()
-githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+// def githubProperties = new Properties()
+// githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 def getVersionName = { ->
  return version // 仓库版本
@@ -91,8 +91,8 @@ credentials {
          ** gpr.usr=GITHUB_USER_ID & gpr.key=PERSONAL_ACCESS_TOKEN
          ** Set env variable GPR_USER & GPR_API_KEY if not adding a properties file**/
 
-         username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-         password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+         username = "${GPR_USER}" ?: System.getenv("GPR_USER")
+         password = "${GPR_API_KEY}" ?: System.getenv("GPR_API_KEY")
       }
     }
   }
