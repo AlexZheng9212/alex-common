@@ -7,3 +7,5 @@ bin
 .classpath
 # Ignore Gradle build output directory
 build
+
+github.properties

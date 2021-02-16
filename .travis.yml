@@ -1,11 +1,16 @@
 language: java
 
 jdk:
-  - openjdk8
+  - openjdk11
 
 branches:
   only:
     - main
     - /^feature/.*$/
 
-script: ./gradlew check
+script:
+  - ./gradlew check
+  - if [$TRAVIS_BRANCH == "main"]; then
+    ./gradlew build;
+    ./gradlew publish;
+    fi
