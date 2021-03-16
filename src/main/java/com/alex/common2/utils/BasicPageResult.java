@@ -2,13 +2,12 @@ package com.alex.common2.utils;
 
 import java.util.List;
 
+import lombok.Builder;
+
+@Builder
 public class BasicPageResult<T> {
-  public List<T> data;
-  public Integer total;
-
-  public BasicPageResult(List<T> data) {
-    this.data = data;
-    this.total = data.size();
-  }
-
+  private List<T> data;
+  private Integer total;
+  private Integer current;
+  private Integer pageSize;
 }
