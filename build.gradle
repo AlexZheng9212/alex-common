@@ -28,6 +28,8 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
     implementation 'com.rabbitmq:amqp-client:4.0.2'
+    implementation group: 'com.google.guava', name: 'guava', version: '30.0-jre'
+    implementation group: 'org.apache.lucene', name: 'lucene-core', version: '8.8.0'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.3.RELEASE'
     compile group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
@@ -49,7 +51,7 @@ dependencies {
 }
 
 
-version = 'release-1.0.0'
+version = 'release-1.1.0'
 
 // def githubProperties = new Properties()
 // githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
@@ -90,8 +92,8 @@ java {
 //         /** Create github.properties in root project folder file with
 //          ** gpr.usr=GITHUB_USER_ID & gpr.key=PERSONAL_ACCESS_TOKEN
 //          ** Set env variable GPR_USER & GPR_API_KEY if not adding a properties file**/
-//          username = ${GPR_USER} ?: System.getenv("GPR_USER")
-//          password = ${GPR_API_KEY} ?: System.getenv("GPR_API_KEY")
+//          username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+//          password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
 //       }
 //     }
 //   }
