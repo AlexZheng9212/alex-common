@@ -12,15 +12,8 @@ public class CustomizeHashMapCacheTest {
   public void happyPass() throws Exception {
     String key = "key";
     String value = "val";
-    String newKey = "new Key";
-    CustomizeHashMapCache<String, String> chmap = CustomizeHashMapCache.<String, String>builder().cacheSize(1024l)
-        .func(s -> mockFunc(s)).policy(RefreshPolicy.NONE).build();
+    CustomizeHashMapCache<String, String> chmap = new CustomizeHashMapCache<String, String>(1024l, RefreshPolicy.NONE);
     chmap.putIfAvailable(key, value);
     assertEquals(value, chmap.get(key));
-    assertEquals(newKey, chmap.getValSafely(newKey));
-  }
-
-  private String mockFunc(String s) {
-    return s;
   }
 }
