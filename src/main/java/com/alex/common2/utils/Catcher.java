@@ -1,5 +1,7 @@
 package com.alex.common2.utils;
 
+import javax.management.RuntimeErrorException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +17,18 @@ public abstract class Catcher {
 
   public interface ThrowableSupplier<T> {
     T get() throws Throwable;
+  }
+
+  public static <T> T unSafeCall(ThrowableSupplier<T> supplier) {
+    try {
+      return supplier.get();
+    } catch (Throwable e) {
+      if (e instanceof RuntimeException) {
+        throw (RuntimeException) e;
+      } else {
+        throw new RuntimeException(e);
+      }
+    }
   }
 
   public static void safeCall(ThrowableRunner caller, boolean logError) {
